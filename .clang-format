@@ -1,0 +1,45 @@
+﻿---
+BasedOnStyle: Microsoft
+AlignAfterOpenBracket: DontAlign
+AlignConsecutiveAssignments: 'false'
+AlignConsecutiveDeclarations: 'false'
+AlignEscapedNewlines: Left
+AlignOperands: 'true'
+AlignTrailingComments: 'true'
+AllowShortBlocksOnASingleLine: 'true'
+AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: 'true'
+AlwaysBreakTemplateDeclarations: 'Yes'
+BinPackArguments: 'false'
+BinPackParameters: 'false'
+BreakBeforeBinaryOperators: NonAssignment
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+Cpp11BracedListStyle: 'true'
+FixNamespaceComments: 'true'
+IncludeBlocks: Regroup
+IndentCaseLabels: 'false'
+NamespaceIndentation: None
+PointerAlignment: Middle
+SortIncludes: 'true'
+SortUsingDeclarations: 'true'
+SpaceAfterLogicalNot: 'true'
+SpaceAfterTemplateKeyword: 'true'
+SpaceBeforeAssignmentOperators: 'true'
+SpaceBeforeCpp11BracedList: 'true'
+SpaceBeforeCtorInitializerColon: 'true'
+SpaceBeforeInheritanceColon: 'true'
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: 'true'
+SpaceInEmptyParentheses: 'false'
+SpacesInAngles: 'true'
+SpacesInContainerLiterals: 'true'
+SpacesInParentheses: 'true'
+SpacesInSquareBrackets: 'true'
+Standard: Auto
+UseTab: Always
+
+...
