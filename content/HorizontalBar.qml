@@ -18,5 +18,6 @@ RowLayout {
 
     ExitButton {
         Layout.alignment: Qt.AlignRight
+        visible: settings.general.show_close_button
     }
 }

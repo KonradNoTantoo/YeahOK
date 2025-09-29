@@ -29,7 +29,7 @@ Produces a single executable named `yeah_ok`.
 
 An [example configuration file](./yeah_ok.conf) is available at the root of the project.
 
-On first run, `yeah_ok` will create a default configuration in whatever directory Qt uses for application configuration files.
+On first run, `yeah_ok` will create a default configuration in whatever directory Qt uses for application configuration files, *e.g.* `~/.config/WTF/yeah_ok.conf`.
 
 # Accessing `/dev/uinput`
 
@@ -52,4 +52,3 @@ Its the user's responsibility to figure out if the cosmetic layout displayed by 
 # Roadmap
 
 * Dynamic position changes
-* Show/hide exit button based on setting

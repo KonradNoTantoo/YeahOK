@@ -27,6 +27,7 @@ Window {
         property var general: Settings {
             property string font: "Open Sans"
             property string language: ""
+            property bool show_close_button: true
         }
 
         property var position: Settings {

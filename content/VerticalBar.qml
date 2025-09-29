@@ -11,6 +11,7 @@ ColumnLayout {
 
     ExitButton {
         Layout.alignment: Qt.AlignTop
+        visible: settings.general.show_close_button
     }
 
     FoldButton {
