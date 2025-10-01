@@ -3,13 +3,17 @@ cmake_minimum_required(VERSION 3.21.1)
 option(LINK_INSIGHT "Link Qt Insight Tracker library" ON)
 option(BUILD_QDS_COMPONENTS "Build design studio components" ON)
 
-project(yeah_ok LANGUAGES CXX)
+project(yeah_ok
+    DESCRIPTION "Yet another hasty Onscreen Keyboard"
+    VERSION 1.0.0
+    LANGUAGES CXX)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick)
+find_package(Qt6 6.3 REQUIRED COMPONENTS Core Gui Qml Quick)
 find_package(PkgConfig)
 pkg_check_modules(LIBEVDEV REQUIRED libevdev)
 
