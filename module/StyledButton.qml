@@ -50,11 +50,11 @@ Button {
 
     Connections {
         target: mainWindow
-        onSwitchCase: (upper) => switchCase(upper)
+        function onSwitchCase(upper) { switchCase(upper) }
     }
 
     Connections {
         target: mainWindow
-        onAlternateGraph: (active) => alternateGraph(active)
+        function onAlternateGraph(active) { alternateGraph(active) }
     }
 }

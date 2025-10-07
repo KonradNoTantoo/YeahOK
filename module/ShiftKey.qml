@@ -9,6 +9,6 @@ ModifierKey {
 
     Connections {
         target: mainWindow
-        onAlternateGraph: (active) => {key.enabled = !active}
+        function onAlternateGraph(active) { key.enabled = !active }
     }
 }

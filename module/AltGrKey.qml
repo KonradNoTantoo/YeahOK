@@ -10,6 +10,6 @@ ModifierKey {
 
     Connections {
         target: mainWindow
-        onSwitchCase: (upper) => {key.enabled = !upper}
+        function onSwitchCase(upper) { key.enabled = !upper }
     }
 }
