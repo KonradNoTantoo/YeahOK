@@ -5,7 +5,6 @@ import QtQuick 6.2
 import QtQuick.Layouts 6.2
 import QtCore
 import YeahOK
-import content
 
 Window {
     visible: true
@@ -374,7 +373,7 @@ Window {
 
         language = language.toLowerCase()
         console.log("Loading layout for language:", language)
-        kbLoader.setSource("Layout_" + language + ".qml")
+        kbLoader.setSource("module/Layout_" + language + ".qml")
     }
 
     Component.onDestruction: {

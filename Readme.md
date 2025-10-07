@@ -29,7 +29,7 @@ Produces a single executable named `yeah_ok`.
 
 An [example configuration file](./yeah_ok.conf) is available at the root of the project.
 
-On first run, `yeah_ok` will create a default configuration in whatever directory Qt uses for application configuration files, *e.g.* `~/.config/WTF/yeah_ok.conf`.
+On first run, `yeah_ok` will create a default configuration in whatever directory Qt uses for application configuration files, *e.g.* `~/.config/KNT/yeah_ok.conf`.
 
 # Accessing `/dev/uinput`
 

@@ -1,8 +1,5 @@
 cmake_minimum_required(VERSION 3.21.1)
 
-option(LINK_INSIGHT "Link Qt Insight Tracker library" ON)
-option(BUILD_QDS_COMPONENTS "Build design studio components" ON)
-
 project(yeah_ok
     DESCRIPTION "Yet another hasty Onscreen Keyboard"
     VERSION 1.0.0
@@ -11,47 +8,60 @@ project(yeah_ok
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_AUTOMOC ON)
-
-find_package(Qt6 6.3 REQUIRED COMPONENTS Core Gui Qml Quick)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
 find_package(PkgConfig)
 pkg_check_modules(LIBEVDEV REQUIRED libevdev)
 
-if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
-    qt_standard_project_setup()
-endif()
+qt_standard_project_setup()
 
-qt_add_executable(yeah_ok src/main.cpp)
-
-qt_add_resources(yeah_ok "configuration"
-    PREFIX "/"
-    FILES
-        qtquickcontrols2.conf
+qt_add_executable(yeah_ok
+    main.cpp
 )
 
-target_link_libraries(yeah_ok PRIVATE
-    Qt6::Core
-    Qt6::Gui
-    Qt6::Qml
-    Qt6::Quick
-    contentplugin
+qt_add_qml_module(yeah_ok
+    URI YeahOK
+    VERSION 1.0
+    QML_FILES
+        Main.qml
+        module/AltGrKey.qml
+        module/ControlBarFactory.qml
+        module/ExitButton.qml
+        module/FoldButton.qml
+        module/HorizontalBar.qml
+        module/Key.qml
+        module/Layout_fr.qml
+        module/Layout_us.qml
+        module/ModifierKey.qml
+        module/Position.qml
+        module/PositionHandler.qml
+        module/ShiftKey.qml
+        module/StyledButton.qml
+        module/VerticalBar.qml
+    SOURCES
+        module/KeyPressTransmitter.h
+        module/KeyPressTransmitter.cpp
 )
 
-set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qml)
-set(QML_IMPORT_PATH ${QT_QML_OUTPUT_DIRECTORY}
-    CACHE STRING "Import paths for Qt Creator's code model"
-    FORCE
+target_include_directories(yeah_ok PRIVATE
+    ${LIBEVDEV_INCLUDE_DIRS}
+    module/
 )
 
-if (BUILD_QDS_COMPONENTS)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/qmlcomponents)
-endif()
+# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
+# If you are developing for iOS or macOS you should consider setting an
+# explicit, fixed bundle identifier manually though.
+set_target_properties(yeah_ok PROPERTIES
+#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appYeahOK
+    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    MACOSX_BUNDLE TRUE
+    WIN32_EXECUTABLE TRUE
+)
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/qmlmodules)
-
-if (LINK_INSIGHT)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/insight)
-endif ()
+target_link_libraries(yeah_ok
+    PRIVATE Qt6::Quick PRIVATE
+    ${LIBEVDEV_LIBRARIES}
+)
 
 include(GNUInstallDirs)
 install(TARGETS yeah_ok
@@ -59,7 +69,3 @@ install(TARGETS yeah_ok
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
-
-# make IDEs aware of the QML import path
-set(QML_IMPORT_PATH ${PROJECT_BINARY_DIR}/qml CACHE PATH
-    "Path to the custom QML components defined by the project")
